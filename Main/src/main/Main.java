@@ -4,6 +4,9 @@
  */
 package main;
 
+import EDD.MonticuloBinario;
+import EDD.TablaDispersion;
+
 /**
  *
  * @author gianf
@@ -14,15 +17,29 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArbolBinario mytree = new ArbolBinario();
-        mytree.InsertarRoot(10);
-        // inserta a la derecha
-        mytree.InsertarDer(10, 16);
-        //inserta a la izquierda
-        mytree.InsertarIzq(10, 5);
-        // como quiero volver a la izquierda del 10 se sustituye el 5 por el 6
-        mytree.InsertarIzq(10, 6);
-        mytree.Preorden(mytree.getRoot());
-    }
+//
+//    MonticuloBinario pq = new MonticuloBinario(5);
+//    pq.insertar(3);
+//    pq.insertar(8);
+//    pq.insertar(1);
+//    pq.insertar(7);
+//    pq.insertar(2);
+//
+//    System.out.println("Elemento minimo: " + pq.extraerMinimo());
+//    System.out.println("Elemento minimo: " + pq.extraerMinimo());
+//    System.out.println("Elemento minimo: " + pq.extraerMinimo());
+//    System.out.println("Elemento minimo: " + pq.extraerMinimo());
+//    System.out.println("Elemento minimo: " + pq.extraerMinimo());
 
+        TablaDispersion t = new TablaDispersion();
+        t.insertar("Cristian", "Cacao");
+        t.insertar("Andres", "Camello");
+        t.insertar("Jonathan", "Selva");
+        t.insertar("Nicole", "Animal");
+        for (int i = 0; i < 200; i++) {
+            if (t.usuario[i] != null) {
+                System.out.println(t.usuario[i].getNameUsuario());
+            }
+        }
+    }
 }
