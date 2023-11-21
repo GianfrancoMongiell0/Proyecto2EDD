@@ -4,6 +4,8 @@
  */
 package main;
 
+import EDD.TablaDispersion;
+
 /**
  *
  * @author gianf
@@ -14,7 +16,37 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+//
+//    MonticuloBinario pq = new MonticuloBinario(5);
+//    pq.insertar(3);
+//    pq.insertar(8);
+//    pq.insertar(1);
+//    pq.insertar(7);
+//    pq.insertar(2);
+//
+//    System.out.println("Elemento minimo: " + pq.extraerMinimo());
+//    System.out.println("Elemento minimo: " + pq.extraerMinimo());
+//    System.out.println("Elemento minimo: " + pq.extraerMinimo());
+//    System.out.println("Elemento minimo: " + pq.extraerMinimo());
+//    System.out.println("Elemento minimo: " + pq.extraerMinimo());
+
+        TablaDispersion t = new TablaDispersion();
+        t.insertar("Cristian", "Cacao");
+        t.insertar("Andres", "Camello");
+        t.insertar("Jonathan", "Selva");
+        t.insertar("Nicole", "Animal");
+        for (int i = 0; i < 200; i++) {
+            if (t.usuarios[i] != null) {
+                System.out.println(t.usuarios[i].getNameUsuario());
+            }
+        }
+        int n = t.BuscarUsuario("Andres");
+        System.out.println(n);
+        t.eliminar("Andres");
+         for (int i = 0; i < 200; i++) {
+            if (t.usuarios[i] != null) {
+                System.out.println(t.usuarios[i].getNameUsuario());
+            }
+        }
     }
-    
 }
