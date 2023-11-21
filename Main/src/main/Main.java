@@ -4,7 +4,6 @@
  */
 package main;
 
-import EDD.MonticuloBinario;
 import EDD.TablaDispersion;
 
 /**
@@ -37,8 +36,16 @@ public class Main {
         t.insertar("Jonathan", "Selva");
         t.insertar("Nicole", "Animal");
         for (int i = 0; i < 200; i++) {
-            if (t.usuario[i] != null) {
-                System.out.println(t.usuario[i].getNameUsuario());
+            if (t.usuarios[i] != null) {
+                System.out.println(t.usuarios[i].getNameUsuario());
+            }
+        }
+        int n = t.BuscarUsuario("Andres");
+        System.out.println(n);
+        t.eliminar("Andres");
+         for (int i = 0; i < 200; i++) {
+            if (t.usuarios[i] != null) {
+                System.out.println(t.usuarios[i].getNameUsuario());
             }
         }
     }

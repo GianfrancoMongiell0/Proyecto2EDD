@@ -10,7 +10,7 @@ package EDD;
  */
 public class NodeUser {
         
-        private String NameUsuario;
+        String NameUsuario;
         private String Prioridad;
         
     public NodeUser(String NameUsuario, String Prioridad) {
