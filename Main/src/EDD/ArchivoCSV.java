@@ -4,42 +4,66 @@
  */
 package EDD;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.nio.Buffer;
-import javax.swing.JOptionPane;
-
 /**
  *
- * @author gianf
+ * @author Asus
  */
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class ArchivoCSV {
+    public static TablaDispersion tabla;
+    public ArchivoCSV(TablaDispersion t){
+        this.tabla  = t;
+    }
 
-    private BufferedReader lector;
-    private String linea;
-    private String partes[];
+    public static void leerArchivoCSV(TablaDispersion td) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Seleccionar Archivo CSV");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos CSV", "csv"));
 
-    public void leerArchivoCSV(String nombreArchivo) {
-        try {
-            lector = new BufferedReader(new FileReader(nombreArchivo));
-            while ((linea = lector.readLine()) != null) {
-                partes = linea.split(",");
-                imprimirLinea();
-                System.out.println();
+        int seleccion = fileChooser.showOpenDialog(null);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File archivo = fileChooser.getSelectedFile();
+            try {
+                BufferedReader lector = new BufferedReader(new FileReader(archivo));
+                String linea;
+                while ((linea = lector.readLine()) != null) {
+                    procesarLinea(linea, td);
+                }
+                lector.close();
+                JOptionPane.showMessageDialog(null, "Cargado Exitosamente");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-            lector.close();
-            linea = null;
-            partes = null;
-        } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e);
-        }
-
-    }
-
-    public void imprimirLinea() {
-        for (int i = 0; i < partes.length; i++) {
-            System.out.println(partes[i] + "|");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún archivo.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
     }
 
+    private static void procesarLinea(String linea, TablaDispersion td) {
+        // Dividir la línea en partes basadas en la coma
+        linea =linea.replace("\"", "");
+        String[] partes = linea.split(",");
+        
+
+        // Si la línea contiene 2 partes, es una línea de datos válida
+        if (partes.length == 2) {
+            
+            String usuario = partes[0].trim();
+            String tipo = partes[1].trim();
+            
+            td.insertar(usuario, tipo);
+            System.out.println("Usuario: " + usuario + ", Tipo: " + tipo);
+           
+        }
+    }
 }

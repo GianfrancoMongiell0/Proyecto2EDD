@@ -10,12 +10,13 @@ package EDD;
  */
 public class NodeUser {
         
-        String NameUsuario;
+        public String NameUsuario;
         private String Prioridad;
-        
+        public NodeDoc[] docs;
     public NodeUser(String NameUsuario, String Prioridad) {
         this.NameUsuario = NameUsuario;
         this.Prioridad = Prioridad;
+        this.docs = new NodeDoc[11];
     }
 
     public String getNameUsuario() {
@@ -32,5 +33,23 @@ public class NodeUser {
 
     public void setPrioridad(String Prioridad) {
         this.Prioridad = Prioridad;
+    }
+    
+    public void insertarDoc(NodeDoc doc){
+        for (int i = 0; i < docs.length; i++) {
+            if(docs[i] == null){
+                docs[i] = doc;
+                break;
+            }
+        }
+    }
+    
+    public void eliminarDoc(String doc){
+        for (int i = 0; i < docs.length; i++) {
+            if(docs[i] != null && docs[i].title.equals(doc)){
+                docs[i]  = null;
+                break;
+            }
+        }
     }
 }
