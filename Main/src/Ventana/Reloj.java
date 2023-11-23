@@ -6,7 +6,7 @@ import java.util.*;
  *
  * @author gianf
  */
-public class Reloj extends javax.swing.JFrame implements Runnable {
+public class Reloj extends javax.swing.JFrame implements Runnable{
 
     String hora, minutos, segundos, ampm;
     Calendar calendario;

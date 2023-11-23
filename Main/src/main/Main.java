@@ -21,7 +21,7 @@ public class Main {
 
 //        Lector lec = new Lector();
 //        lec.leerCSV();
-    new Reloj();
+   
         
         
         
