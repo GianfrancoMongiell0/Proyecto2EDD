@@ -7,7 +7,7 @@ package main;
 import EDD.Lector;
 import EDD.TablaDispersion;
 import java.io.IOException;
-
+import Ventana.Reloj;
 /**
  *
  * @author gianf
@@ -19,9 +19,9 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
 
-        Lector lec = new Lector();
-        lec.leerCSV();
-        
+//        Lector lec = new Lector();
+//        lec.leerCSV();
+    new Reloj();
         
         
         
