@@ -88,25 +88,24 @@ public class TablaDispersion {
                 this.usuarios[n] = null;}
    }
     public void imprimir(){
+        
     for (int i = 0; i < usuarios.length; i++) {
         if (usuarios[i] != null) {
-            System.out.println("Posicion: " + i );
             System.out.println("Nombre de Usuario: " + usuarios[i].getNameUsuario());
             System.out.println("Prioridad: " + usuarios[i].getPrioridad());
+            System.out.println("Posicion: " + i );
             
             for (int j = 0; j < 11; j++) {
                 if(usuarios[i].docs[j]!= null){
-                  System.out.println(usuarios[i].docs[j].title);
+                  System.out.println("Documento: " + usuarios[i].docs[j].title);
             }}
             }
         }
     }
     
-    
-    
     public void insertarDoc(String usuario, String titulo, String size, String tipo, int tiempo){
         int index = this.BuscarUsuario(usuario);
-        NodeDoc d = new NodeDoc(  titulo,  size,  tipo,  tiempo);
+        NodeDoc d = new NodeDoc(  titulo, size,  tipo,  tiempo);
         this.usuarios[index].insertarDoc(d);
     }
     
