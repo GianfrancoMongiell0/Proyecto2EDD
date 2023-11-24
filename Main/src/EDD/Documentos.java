@@ -4,36 +4,41 @@
  */
 package EDD;
 
+import Metodo.NewClass;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Asus
  */
 public class Documentos extends javax.swing.JFrame {
-        public MonticuloBinario mb;
-        public static TablaDispersion tabla;
-        
+
+    public MonticuloBinario mb;
+    public static TablaDispersion tabla;
+
     /**
      * Creates new form Documentos
+     *
      * @param t
      */
     public Documentos(TablaDispersion t) {
-        
+
         this.tabla = t;
-         mb = new MonticuloBinario(100);
-        NodeDoc n = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  8);
+        mb = new MonticuloBinario(100);
+        NodeDoc n = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 8);
         mb.insertar(n);
-        NodeDoc m = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  5);
-        mb.insertar(m);        
-        NodeDoc o = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  9);
-        mb.insertar(o);        
-        NodeDoc p = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  2);
-        mb.insertar(p);     
-        NodeDoc q = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  3);
-        mb.insertar(q);      
-        NodeDoc w = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  4);
-        mb.insertar(w);      
-        NodeDoc i = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  1);
-        mb.insertar(i);    
+        NodeDoc m = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 5);
+        mb.insertar(m);
+        NodeDoc o = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 9);
+        mb.insertar(o);
+        NodeDoc p = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 2);
+        mb.insertar(p);
+        NodeDoc q = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 3);
+        mb.insertar(q);
+        NodeDoc w = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 4);
+        mb.insertar(w);
+        NodeDoc i = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 1);
+        mb.insertar(i);
         initComponents();
         this.setVisible(true);
     }
@@ -77,13 +82,13 @@ public class Documentos extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Título");
+        jLabel1.setText("Título:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
-        jLabel2.setText("Tamaño");
+        jLabel2.setText("Tamaño:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
-        jLabel3.setText("Documento");
+        jLabel3.setText("Documento:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         cola.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
@@ -105,7 +110,7 @@ public class Documentos extends javax.swing.JFrame {
                 eliminarDocActionPerformed(evt);
             }
         });
-        jPanel1.add(eliminarDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 130, -1));
+        jPanel1.add(eliminarDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 130, -1));
 
         crearDoc.setText("Crear Doc");
         crearDoc.addActionListener(new java.awt.event.ActionListener() {
@@ -113,16 +118,22 @@ public class Documentos extends javax.swing.JFrame {
                 crearDocActionPerformed(evt);
             }
         });
-        jPanel1.add(crearDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
+        jPanel1.add(crearDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
         DOCUMENTO.setColumns(20);
         DOCUMENTO.setRows(5);
         jScrollPane2.setViewportView(DOCUMENTO);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 250, 200));
-        jPanel1.add(DOC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 80, -1));
-        jPanel1.add(TITULO, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 80, -1));
-        jPanel1.add(SIZE, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 80, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 250, 200));
+        jPanel1.add(DOC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 100, -1));
+        jPanel1.add(TITULO, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 100, -1));
+
+        SIZE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SIZEActionPerformed(evt);
+            }
+        });
+        jPanel1.add(SIZE, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 100, -1));
 
         jButton1.setText("X");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -140,22 +151,27 @@ public class Documentos extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, -1, -1));
 
-        jButton2.setText("<");
+        jButton2.setText("◀");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 50, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 50, 30));
 
         username1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 username1ActionPerformed(evt);
             }
         });
-        jPanel1.add(username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 80, -1));
+        username1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                username1KeyTyped(evt);
+            }
+        });
+        jPanel1.add(username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 100, -1));
 
-        jLabel4.setText("Usuario");
+        jLabel4.setText("Usuario:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 330));
@@ -164,30 +180,44 @@ public class Documentos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDocActionPerformed
-        
-        String usuario = this.username1.getText(); 
-        String titulo = this.TITULO.getText();
-        String size = this.SIZE.getText();
-        String tipo = this.DOC.getText();
-        
-         this.tabla.eliminar(usuario);
+        if (username1.getText().isEmpty() || TITULO.getText().isEmpty() || SIZE.getText().isEmpty() || DOC.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor rellene los campos", "ADVERTENCIA", 2);
+        } else {
+            String usuario = this.username1.getText().toLowerCase();
 
-        String texto = "Documento eliminado";
-        DOCUMENTO.setText(texto);
+            String titulo = this.TITULO.getText().toLowerCase();
+
+            String size = this.SIZE.getText();
+
+            String tipo = this.DOC.getText().toLowerCase();
+
+            this.tabla.eliminar(usuario);
+
+            String texto = "Documento eliminado";
+            DOCUMENTO.setText(texto);
+
+        }
+
 
     }//GEN-LAST:event_eliminarDocActionPerformed
 
     private void crearDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDocActionPerformed
-         
-        String usuario = this.username1.getText();
-        String titulo = this.TITULO.getText();
-        String size = this.SIZE.getText();
-        String tipo = this.DOC.getText();
-            
-        String texto = "Usuario: " + usuario + "\nTítulo: " + titulo + "\nTamaño: " + size + "\nTipo: " + tipo;
-        DOCUMENTO.setText(texto);
-        this.tabla.insertarDoc(usuario, titulo, size, tipo, 0);
-        
+        if (username1.getText().isEmpty() || TITULO.getText().isEmpty() || SIZE.getText().isEmpty() || DOC.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor rellene los campos", "ADVERTENCIA", 2);
+        } else {
+            String usuario = this.username1.getText().toLowerCase();
+            String titulo = this.TITULO.getText().toLowerCase();
+
+            String size = this.SIZE.getText();
+
+            String tipo = this.DOC.getText().toLowerCase();
+            String texto = "Usuario: " + usuario + "\nTítulo: " + titulo + "\nTamaño: " + size + "\nTipo: " + tipo;
+
+            DOCUMENTO.setText(texto);
+
+            this.tabla.insertarDoc(usuario, titulo, size, tipo, 0);
+        }
+
     }//GEN-LAST:event_crearDocActionPerformed
 
     private void colaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colaActionPerformed
@@ -212,6 +242,20 @@ public class Documentos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_username1ActionPerformed
 
+    private void username1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_username1KeyTyped
+        int key = evt.getKeyChar();
+        boolean mayuscula = key >= 65 && key <= 90;
+        boolean minuscula = key >= 97 && key <= 122;
+
+        if (!(minuscula || mayuscula)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_username1KeyTyped
+
+    private void SIZEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SIZEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SIZEActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -226,24 +270,32 @@ public class Documentos extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Documentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Documentos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Documentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Documentos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Documentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Documentos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Documentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Documentos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-       java.awt.EventQueue.invokeLater(() -> {
-           new Documentos(new TablaDispersion()).setVisible(true);
+        java.awt.EventQueue.invokeLater(() -> {
+            new Documentos(new TablaDispersion()).setVisible(true);
         });
-}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DOC;
