@@ -4,6 +4,8 @@
  */
 package main;
 
+import EDD.Ventana1;
+
 /**
  *
  * @author gianf
@@ -14,7 +16,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        
+        Ventana1 ventana  = new Ventana1();
+        ventana.setVisible(true);
     }
-    
 }
+        
+    
