@@ -4,6 +4,7 @@
  */
 package EDD;
 
+import Metodo.NewClass;
 import javax.swing.JOptionPane;
 
 /**
