@@ -4,53 +4,38 @@
  */
 package EDD;
 
-import Ventana.Reloj;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 /**
  *
  * @author Asus
  */
-public class Usuarios extends javax.swing.JFrame implements Runnable {
-
+public class Usuarios extends javax.swing.JFrame {
     public MonticuloBinario mb;
     public static TablaDispersion tabla;
-
-    String hora, minutos, segundos, ampm;
-    Calendar calendario;
-    Thread h1;
-
+    
+    
+    
     /**
      * Creates new form Usuarios
      */
     public Usuarios(TablaDispersion t) {
         this.tabla = t;
-        mb = new MonticuloBinario(100);
-        NodeDoc n = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 8);
+         mb = new MonticuloBinario(100);
+        NodeDoc n = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  8);
         mb.insertar(n);
-        NodeDoc m = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 5);
-        mb.insertar(m);
-        NodeDoc o = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 9);
-        mb.insertar(o);
-        NodeDoc p = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 2);
-        mb.insertar(p);
-        NodeDoc q = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 3);
-        mb.insertar(q);
-        NodeDoc w = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 4);
-        mb.insertar(w);
-        NodeDoc i = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 1);
-        mb.insertar(i);
+        NodeDoc m = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  5);
+        mb.insertar(m);        
+        NodeDoc o = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  9);
+        mb.insertar(o);        
+        NodeDoc p = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  2);
+        mb.insertar(p);     
+        NodeDoc q = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  3);
+        mb.insertar(q);      
+        NodeDoc w = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  4);
+        mb.insertar(w);      
+        NodeDoc i = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  1);
+        mb.insertar(i);    
         initComponents();
         this.setVisible(true);
-
-        h1 = new Thread(this);
-        h1.start();
-
-        setLocationRelativeTo(null);
-        setTitle("RELOJ");
-        setVisible(true);
     }
 
     /**
@@ -80,7 +65,6 @@ public class Usuarios extends javax.swing.JFrame implements Runnable {
         cola = new javax.swing.JTextArea();
         imprimirMont = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        lblReloj = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -169,11 +153,6 @@ public class Usuarios extends javax.swing.JFrame implements Runnable {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, -1, -1));
 
-        lblReloj.setBackground(new java.awt.Color(0, 0, 0));
-        lblReloj.setForeground(new java.awt.Color(0, 0, 0));
-        lblReloj.setText("Reloj");
-        jPanel1.add(lblReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 190, 70));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 550));
 
         pack();
@@ -182,13 +161,13 @@ public class Usuarios extends javax.swing.JFrame implements Runnable {
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
         // TODO add your handling code here:
         tabla.imprimir();
-
+        
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void crear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crear1ActionPerformed
         // TODO add your hadling code here:
         String usuario = this.username1.getText();
-        String prioridad = this.prioridad.getText();
+        String prioridad =this.prioridad.getText();
         this.tabla.insertar(usuario, prioridad);
     }//GEN-LAST:event_crear1ActionPerformed
 
@@ -204,22 +183,22 @@ public class Usuarios extends javax.swing.JFrame implements Runnable {
 
     private void crearDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDocActionPerformed
         // TODO add your handling code here:
-        String usuario = this.username1.getText();
+         String usuario = this.username1.getText();
         String titulo = this.titulo.getText();
         String size = this.tamaño.getText();
         String tipo = this.documento.getText();
 
         this.tabla.insertarDoc(usuario, titulo, size, tipo, 0);
         this.tabla.imprimir();
-
+        
     }//GEN-LAST:event_crearDocActionPerformed
 
     private void deleteDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDocActionPerformed
         // TODO add your handling code here:
-        String usuario = this.username1.getText();
+         String usuario = this.username1.getText();
         String titulo = this.titulo.getText();
-        this.tabla.eliminarDoc(usuario, titulo);
-
+          this.tabla.eliminarDoc(usuario, titulo);
+      
     }//GEN-LAST:event_deleteDocActionPerformed
 
     private void imprimirMontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirMontActionPerformed
@@ -282,42 +261,9 @@ public class Usuarios extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblReloj;
     private javax.swing.JTextField prioridad;
     private javax.swing.JTextField tamaño;
     private javax.swing.JTextField titulo;
     private javax.swing.JTextField username1;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void run() {
-        Thread ct = Thread.currentThread();
-
-        while (ct == h1) {
-            calcula();
-            lblReloj.setText(hora + ":" + minutos + ":" + segundos + " " + ampm);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-            }
-        }
-    }
-    
-    private void calcula() {
-        Calendar calendario = new GregorianCalendar();
-        Date fechaHoraActual = new Date();
-
-        calendario.setTime(fechaHoraActual);
-
-        ampm = calendario.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM";
-        if (ampm.equals("PM")) {
-            int h = calendario.get(Calendar.HOUR_OF_DAY) - 12;
-            hora = h > 9 ? "" : "0" + h;
-        }
-        else{
-        hora = calendario.get(Calendar.HOUR_OF_DAY)>9?""+calendario.get(Calendar.HOUR_OF_DAY):"0"+calendario.get(Calendar.HOUR_OF_DAY);
-        }
-        minutos = calendario.get(Calendar.MINUTE)>9?""+calendario.get(Calendar.MINUTE):"0"+calendario.get(Calendar.MINUTE);
-        segundos = calendario.get(Calendar.SECOND)>9?""+calendario.get(Calendar.SECOND):"0"+calendario.get(Calendar.SECOND);
-    }
 }
