@@ -4,7 +4,6 @@
  */
 package EDD;
 
-import Metodo.NewClass;
 import javax.swing.JOptionPane;
 
 /**
@@ -126,6 +125,12 @@ public class Documentos extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 250, 200));
         jPanel1.add(DOC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 100, -1));
+
+        TITULO.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TITULOKeyTyped(evt);
+            }
+        });
         jPanel1.add(TITULO, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 100, -1));
 
         SIZE.addActionListener(new java.awt.event.ActionListener() {
@@ -244,10 +249,8 @@ public class Documentos extends javax.swing.JFrame {
 
     private void username1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_username1KeyTyped
         int key = evt.getKeyChar();
-        boolean mayuscula = key >= 65 && key <= 90;
-        boolean minuscula = key >= 97 && key <= 122;
-
-        if (!(minuscula || mayuscula)) {
+        boolean vacio = key != 32;
+        if (!(vacio)) {
             evt.consume();
         }
     }//GEN-LAST:event_username1KeyTyped
@@ -255,6 +258,10 @@ public class Documentos extends javax.swing.JFrame {
     private void SIZEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SIZEActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SIZEActionPerformed
+
+    private void TITULOKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TITULOKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TITULOKeyTyped
 
     /**
      * @param args the command line arguments
