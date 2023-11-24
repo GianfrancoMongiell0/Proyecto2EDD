@@ -12,28 +12,12 @@ public class Usuarios extends javax.swing.JFrame {
     public MonticuloBinario mb;
     public static TablaDispersion tabla;
     
-    
-    
     /**
      * Creates new form Usuarios
+     * @param t
      */
     public Usuarios(TablaDispersion t) {
         this.tabla = t;
-         mb = new MonticuloBinario(100);
-        NodeDoc n = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  8);
-        mb.insertar(n);
-        NodeDoc m = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  5);
-        mb.insertar(m);        
-        NodeDoc o = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  9);
-        mb.insertar(o);        
-        NodeDoc p = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  2);
-        mb.insertar(p);     
-        NodeDoc q = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  3);
-        mb.insertar(q);      
-        NodeDoc w = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  4);
-        mb.insertar(w);      
-        NodeDoc i = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds",  1);
-        mb.insertar(i);    
         initComponents();
         this.setVisible(true);
     }
@@ -53,31 +37,25 @@ public class Usuarios extends javax.swing.JFrame {
         prioridad = new javax.swing.JTextField();
         username1 = new javax.swing.JTextField();
         crear1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        titulo = new javax.swing.JTextField();
-        tamaño = new javax.swing.JTextField();
-        documento = new javax.swing.JTextField();
-        crearDoc = new javax.swing.JButton();
-        deleteDoc = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        cola = new javax.swing.JTextArea();
-        imprimirMont = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TextAreaCola = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        eliminar.setText("Eliminar Usuario");
+        eliminar.setText("Eliminar ");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
+        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
         imprimir.setText("Imprimir");
         imprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -85,65 +63,17 @@ public class Usuarios extends javax.swing.JFrame {
                 imprimirActionPerformed(evt);
             }
         });
-        jPanel1.add(imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
-        jPanel1.add(prioridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 260, -1));
-        jPanel1.add(username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 260, -1));
+        jPanel1.add(imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
+        jPanel1.add(prioridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 260, -1));
+        jPanel1.add(username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, -1));
 
-        crear1.setText("Crear Usuario");
+        crear1.setText("Crear");
         crear1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crear1ActionPerformed(evt);
             }
         });
-        jPanel1.add(crear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
-
-        jLabel1.setText("Titulo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 30, 20));
-
-        jLabel2.setText("Tamaño");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, -1, -1));
-
-        jLabel3.setText("Documento");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, -1, -1));
-
-        titulo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tituloActionPerformed(evt);
-            }
-        });
-        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 90, -1));
-        jPanel1.add(tamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, 80, -1));
-        jPanel1.add(documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 70, 120, -1));
-
-        crearDoc.setText("Crear Documento");
-        crearDoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearDocActionPerformed(evt);
-            }
-        });
-        jPanel1.add(crearDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, -1, -1));
-
-        deleteDoc.setText("Eliminar Documento");
-        deleteDoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteDocActionPerformed(evt);
-            }
-        });
-        jPanel1.add(deleteDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, -1, -1));
-
-        cola.setColumns(20);
-        cola.setRows(5);
-        jScrollPane1.setViewportView(cola);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, -1, 260));
-
-        imprimirMont.setText("Mostrar Cola");
-        imprimirMont.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imprimirMontActionPerformed(evt);
-            }
-        });
-        jPanel1.add(imprimirMont, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, -1, -1));
+        jPanel1.add(crear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jButton1.setText("X");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -151,60 +81,52 @@ public class Usuarios extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, -10, 50, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 550));
+        jLabel4.setText("Nombre");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        jLabel5.setText("Tipo/Prioridad");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        TextAreaCola.setColumns(20);
+        TextAreaCola.setRows(5);
+        jScrollPane1.setViewportView(TextAreaCola);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, 190));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 2, 24)); // NOI18N
+        jLabel1.setText("USUARIOS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 250));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-        // TODO add your handling code here:
+        // TextAreaCola.setText();
         tabla.imprimir();
         
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void crear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crear1ActionPerformed
-        // TODO add your hadling code here:
-        String usuario = this.username1.getText();
-        String prioridad =this.prioridad.getText();
-        this.tabla.insertar(usuario, prioridad);
+    String usuario = this.username1.getText();
+    String prioridad = this.prioridad.getText();
+    this.tabla.insertar(usuario, prioridad);
+
+    String texto = "Usuario creado: " + usuario + "\nPrioridad: " + prioridad;
+    TextAreaCola.setText(texto);
+
     }//GEN-LAST:event_crear1ActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        // TODO add your handling code here:
-        String usuario = this.username1.getText();
+       String usuario = this.username1.getText();
         this.tabla.eliminar(usuario);
+
+    String texto = "Usuario eliminado";
+    TextAreaCola.setText(texto);
     }//GEN-LAST:event_eliminarActionPerformed
-
-    private void tituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tituloActionPerformed
-
-    private void crearDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDocActionPerformed
-        // TODO add your handling code here:
-         String usuario = this.username1.getText();
-        String titulo = this.titulo.getText();
-        String size = this.tamaño.getText();
-        String tipo = this.documento.getText();
-
-        this.tabla.insertarDoc(usuario, titulo, size, tipo, 0);
-        this.tabla.imprimir();
-        
-    }//GEN-LAST:event_crearDocActionPerformed
-
-    private void deleteDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDocActionPerformed
-        // TODO add your handling code here:
-         String usuario = this.username1.getText();
-        String titulo = this.titulo.getText();
-          this.tabla.eliminarDoc(usuario, titulo);
-      
-    }//GEN-LAST:event_deleteDocActionPerformed
-
-    private void imprimirMontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirMontActionPerformed
-        // TODO add your handling code here:
-        this.cola.setText(mb.imprimir(""));
-    }//GEN-LAST:event_imprimirMontActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -247,23 +169,17 @@ public class Usuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea cola;
+    private javax.swing.JTextArea TextAreaCola;
     private javax.swing.JButton crear1;
-    private javax.swing.JButton crearDoc;
-    private javax.swing.JButton deleteDoc;
-    private javax.swing.JTextField documento;
     private javax.swing.JButton eliminar;
     private javax.swing.JButton imprimir;
-    private javax.swing.JButton imprimirMont;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField prioridad;
-    private javax.swing.JTextField tamaño;
-    private javax.swing.JTextField titulo;
     private javax.swing.JTextField username1;
     // End of variables declaration//GEN-END:variables
 }

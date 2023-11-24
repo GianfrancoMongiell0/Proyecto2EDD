@@ -13,6 +13,7 @@ public class NodeUser {
         public String NameUsuario;
         private String Prioridad;
         public NodeDoc[] docs;
+        
     public NodeUser(String NameUsuario, String Prioridad) {
         this.NameUsuario = NameUsuario;
         this.Prioridad = Prioridad;
