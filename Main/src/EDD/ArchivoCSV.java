@@ -9,6 +9,7 @@ package EDD;
  * @author Asus
  */
 import javax.swing.JFileChooser;
+import javax.swing.JTextArea;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.BufferedReader;
@@ -22,7 +23,7 @@ public class ArchivoCSV {
         this.tabla  = t;
     }
 
-    public static void leerArchivoCSV(TablaDispersion td) {
+    public static void leerArchivoCSV(TablaDispersion td, JTextArea textAreaCola) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Seleccionar Archivo CSV");
         fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos CSV", "csv"));
@@ -32,12 +33,12 @@ public class ArchivoCSV {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             File archivo = fileChooser.getSelectedFile();
             try {
-                BufferedReader lector = new BufferedReader(new FileReader(archivo));
-                String linea;
-                while ((linea = lector.readLine()) != null) {
-                    procesarLinea(linea, td);
+                try (BufferedReader lector = new BufferedReader(new FileReader(archivo))) {
+                    String linea;
+                    while ((linea = lector.readLine()) != null) {
+                        procesarLinea(linea, td);
+                    }
                 }
-                lector.close();
                 JOptionPane.showMessageDialog(null, "Cargado Exitosamente");
 
             } catch (IOException e) {
@@ -62,8 +63,8 @@ public class ArchivoCSV {
             String tipo = partes[1].trim();
             
             td.insertar(usuario, tipo);
-            System.out.println("Usuario: " + usuario + ", Tipo: " + tipo);
            
         }
+        
     }
 }

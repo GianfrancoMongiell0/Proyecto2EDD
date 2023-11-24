@@ -16,7 +16,6 @@ public class MonticuloBinario {
 
     public void insertar(NodeDoc valor) {
         if (size == heap.length) {
-            System.out.println("El montículo está lleno");
             return;
         }
 
@@ -27,7 +26,6 @@ public class MonticuloBinario {
 
     public NodeDoc extraerMinimo() {
         if (size == 0) {
-            System.out.println("El montículo está vacío");
             return null; // o algún valor que indique error
         }
 
