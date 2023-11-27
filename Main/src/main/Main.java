@@ -5,6 +5,7 @@
 package main;
 
 import EDD.Ventana1;
+import Ventana.j;
 
 /**
  *
@@ -18,8 +19,10 @@ public class Main {
     public static void main(String[] args) {
 
         
-        Ventana1 ventana  = new Ventana1();
-        ventana.setVisible(true);
+        //Ventana1 ventana  = new Ventana1();
+        //ventana.setVisible(true);
+        
+   
     }
 }
         

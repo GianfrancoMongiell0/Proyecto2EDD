@@ -4,7 +4,6 @@
  */
 package EDD;
 
-import Metodo.NewClass;
 import javax.swing.JOptionPane;
 
 /**
@@ -166,11 +165,10 @@ public class Usuarios extends javax.swing.JFrame {
 
     private void username1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_username1KeyTyped
         int key = evt.getKeyChar();
-        boolean mayuscula = key >= 65 && key <= 90;
-        boolean minuscula = key >= 97 && key <= 122;
+        
         boolean vacio = key != 32;
 
-        if (!(minuscula || mayuscula || vacio)) {
+        if (!( vacio)) {
             evt.consume();
         }
     }//GEN-LAST:event_username1KeyTyped

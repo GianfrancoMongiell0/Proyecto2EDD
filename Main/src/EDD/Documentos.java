@@ -3,17 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package EDD;
-
+import Ventana.j;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Asus
  */
-public class Documentos extends javax.swing.JFrame {
+public class Documentos extends javax.swing.JFrame  {
 
     public MonticuloBinario mb;
     public static TablaDispersion tabla;
+    
+   
 
     /**
      * Creates new form Documentos
@@ -42,6 +45,10 @@ public class Documentos extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
+    
+
+ 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +60,7 @@ public class Documentos extends javax.swing.JFrame {
 
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
+        jFileChooser1 = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -71,6 +79,7 @@ public class Documentos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         username1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
@@ -162,7 +171,7 @@ public class Documentos extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 50, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 50, 30));
 
         username1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,8 +187,9 @@ public class Documentos extends javax.swing.JFrame {
 
         jLabel4.setText("Usuario:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 170, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 330));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -315,6 +325,8 @@ public class Documentos extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -6,13 +6,13 @@ import java.util.*;
  *
  * @author gianf
  */
-public class Reloj extends javax.swing.JFrame implements Runnable{
+public class j extends javax.swing.JFrame implements Runnable{
 
     String hora, minutos, segundos, ampm;
     Calendar calendario;
     Thread h1;
 
-    public Reloj() {
+    public j() {
         initComponents();
         h1 = new Thread(this);
         h1.start();
