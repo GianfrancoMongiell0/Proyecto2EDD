@@ -4,7 +4,9 @@
  */
 package main;
 
-import EDD.Ventana1;
+import EDD.MonticuloBinario;
+import EDD.TablaDispersion;
+import Ventana.Ventana1;
 
 /**
  *
@@ -17,8 +19,9 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        
-        Ventana1 ventana  = new Ventana1();
+        MonticuloBinario mb = new MonticuloBinario(200);
+        TablaDispersion tb = new TablaDispersion();
+        Ventana1 ventana  = new Ventana1(mb, tb);
         ventana.setVisible(true);
     }
 }

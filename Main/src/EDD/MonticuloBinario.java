@@ -6,8 +6,24 @@ package EDD;
 
 //**
 public class MonticuloBinario {
-    private NodeDoc[] heap;
+    public NodeDoc[] heap;
     private int size;
+
+    public NodeDoc[] getHeap() {
+        return heap;
+    }
+
+    public void setHeap(NodeDoc[] heap) {
+        this.heap = heap;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
 
     public MonticuloBinario(int capacidad) {
         heap = new NodeDoc[capacidad];
@@ -24,7 +40,7 @@ public class MonticuloBinario {
         size++;
     }
 
-    public NodeDoc extraerMinimo() {
+    public NodeDoc eliminarMinimo() {
         if (size == 0) {
             return null; // o algún valor que indique error
         }
@@ -32,7 +48,7 @@ public class MonticuloBinario {
         NodeDoc minimo = heap[0];
         heap[0] = heap[size - 1];
         size--;
-        ajustarHaciaAbajo();
+        this.ajustarHaciaAbajo(0);
 
         return minimo;
     }
@@ -45,7 +61,7 @@ public class MonticuloBinario {
         }
     }
 
-    private void ajustarHaciaAbajo() {
+    public void ajustarHaciaAbajo(int i) {
         int indice = 0;
         while (tieneHijoIzquierdo(indice)) {
             int indiceHijoMenor = indiceHijoIzquierdo(indice);
@@ -90,8 +106,7 @@ public class MonticuloBinario {
     }
     
     public String imprimir(String cola){
-         NodeDoc min = this.extraerMinimo();
-
+         NodeDoc min = this.eliminarMinimo();
         if(min!= null){ 
                 cola += min.title + " ,  " + min.etiquetaDeTiempo + "\n";
                 cola = imprimir(cola);

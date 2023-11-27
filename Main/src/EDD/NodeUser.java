@@ -53,4 +53,12 @@ public class NodeUser {
             }
         }
     }
+     public NodeDoc buscarDocumento(String doc){
+        for (int i = 0; i < docs.length; i++) {
+            if(docs[i]!= null && docs[i].title.equals(doc)){
+                return docs[i];
+            }
+        }
+        return null;
+     }
 }

@@ -74,43 +74,65 @@ public class TablaDispersion {
                             break;
                         } else {
                             cont++;
-                          }
-                      }
-                  }
-              }
-          }
+                        }
+                    }
+                }
+            }
+        }
         return -1;
-   }
+    }
 
-    public void eliminar(String usuario){
+    public void eliminar(String usuario) {
         int n = BuscarUsuario(usuario);
-            if (n != -1) {
-                this.usuarios[n] = null;}
-   }
-    public void imprimir(){
-        
-    for (int i = 0; i < usuarios.length; i++) {
-        if (usuarios[i] != null) {
-            System.out.println("Nombre de Usuario: " + usuarios[i].getNameUsuario());
-            System.out.println("Prioridad: " + usuarios[i].getPrioridad());
-            System.out.println("Posicion: " + i );
-            
-            for (int j = 0; j < 11; j++) {
-                if(usuarios[i].docs[j]!= null){
-                  System.out.println("Documento: " + usuarios[i].docs[j].title);
-            }}
+        if (n != -1) {
+            this.usuarios[n] = null;
+        }
+    }
+
+    public void imprimir() {
+
+        for (int i = 0; i < usuarios.length; i++) {
+            if (usuarios[i] != null) {
+                System.out.println("Nombre de Usuario: " + usuarios[i].getNameUsuario());
+                System.out.println("Prioridad: " + usuarios[i].getPrioridad());
+                System.out.println("Posicion: " + i);
+
+                for (int j = 0; j < 11; j++) {
+                    if (usuarios[i].docs[j] != null) {
+                        System.out.println("Documento: " + usuarios[i].docs[j].title);
+                    }
+                }
             }
         }
     }
-    
-    public void insertarDoc(String usuario, String titulo, String size, String tipo, int tiempo){
+
+    public void insertarDoc(String usuario, String titulo, String size, String tipo, int tiempo) {
         int index = this.BuscarUsuario(usuario);
-        NodeDoc d = new NodeDoc(  titulo, size,  tipo,  tiempo);
+        System.out.println(index);
+        NodeDoc d = new NodeDoc(titulo, size, tipo, tiempo);
         this.usuarios[index].insertarDoc(d);
     }
-    
-    public void eliminarDoc(String usuario, String titulo){
+
+    public void eliminarDoc(String usuario, String titulo) {
         int index = this.BuscarUsuario(usuario);
         this.usuarios[index].eliminarDoc(titulo);
+    }
+
+    public String imprimirUser(String data) {
+        for (int i = 0; i < this.usuarios.length; i++) {
+            if (this.usuarios[i] != null) {
+                data += this.usuarios[i].getNameUsuario() + "\n";
+                for (int j = 0; j < this.usuarios[i].docs.length; j++) {
+                    if (this.usuarios[i].docs[j] != null) {
+                        data += this.usuarios[i].docs[j].title + "\n";
+
+                    }
+
+                }
+
+            }
+
+        }
+        return data;
     }
 }
