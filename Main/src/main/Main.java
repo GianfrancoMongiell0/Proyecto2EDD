@@ -4,6 +4,10 @@
  */
 package main;
 
+import EDD.MonticuloBinario;
+import EDD.TablaDispersion;
+import Ventana.Ventana1;
+
 /**
  *
  * @author gianf
@@ -14,7 +18,12 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        MonticuloBinario mb = new MonticuloBinario(200);
+        TablaDispersion tb = new TablaDispersion();
+        Ventana1 ventana  = new Ventana1(mb, tb);
+        ventana.setVisible(true);
     }
-    
 }
+        
+    
