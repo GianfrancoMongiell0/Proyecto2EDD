@@ -1,53 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package EDD;
-import Ventana.j;
-import java.util.Calendar;
+
+package Ventana;
+
+import EDD.MonticuloBinario;
+import EDD.NodeDoc;
+import EDD.TablaDispersion;
+import static Ventana.Impresora.mb;
+import static Ventana.Impresora.tabla;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Asus
+ * Ventana del apartado de documentos
+ * 
+ * @author Cristian Fazio
+ * 
  */
-public class Documentos extends javax.swing.JFrame  {
+public class Documentos extends javax.swing.JFrame {
 
-    public MonticuloBinario mb;
+    public static MonticuloBinario mb;
     public static TablaDispersion tabla;
     
-   
 
     /**
      * Creates new form Documentos
      *
      * @param t
+     * @param MB
      */
-    public Documentos(TablaDispersion t) {
+    public Documentos(TablaDispersion t, MonticuloBinario MB) {
 
         this.tabla = t;
-        mb = new MonticuloBinario(100);
-        NodeDoc n = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 8);
-        mb.insertar(n);
-        NodeDoc m = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 5);
-        mb.insertar(m);
-        NodeDoc o = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 9);
-        mb.insertar(o);
-        NodeDoc p = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 2);
-        mb.insertar(p);
-        NodeDoc q = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 3);
-        mb.insertar(q);
-        NodeDoc w = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 4);
-        mb.insertar(w);
-        NodeDoc i = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 1);
-        mb.insertar(i);
+        this.mb = MB;
         initComponents();
         this.setVisible(true);
+        DOCUMENTO.setText(this.tabla.imprimirUser(""));
+                System.out.println(mb==null);
+
+
     }
-
-    
-
- 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,7 +50,6 @@ public class Documentos extends javax.swing.JFrame  {
 
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
-        jFileChooser1 = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -79,7 +68,6 @@ public class Documentos extends javax.swing.JFrame  {
         jButton2 = new javax.swing.JButton();
         username1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
@@ -96,21 +84,21 @@ public class Documentos extends javax.swing.JFrame  {
         jLabel2.setText("Tamaño:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
-        jLabel3.setText("Documento:");
+        jLabel3.setText("Tiipo de documento:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
-        cola.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         cola.setText("MostrarCola");
         cola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colaActionPerformed(evt);
             }
         });
-        jPanel1.add(cola, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 100, 30));
+        jPanel1.add(cola, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 120, 30));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 2, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Franklin Gothic Book", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("DOCUMENTOS");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         eliminarDoc.setText("Eliminar Doc");
         eliminarDoc.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +106,7 @@ public class Documentos extends javax.swing.JFrame  {
                 eliminarDocActionPerformed(evt);
             }
         });
-        jPanel1.add(eliminarDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 130, -1));
+        jPanel1.add(eliminarDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 120, -1));
 
         crearDoc.setText("Crear Doc");
         crearDoc.addActionListener(new java.awt.event.ActionListener() {
@@ -126,13 +114,13 @@ public class Documentos extends javax.swing.JFrame  {
                 crearDocActionPerformed(evt);
             }
         });
-        jPanel1.add(crearDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
+        jPanel1.add(crearDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 120, -1));
 
         DOCUMENTO.setColumns(20);
         DOCUMENTO.setRows(5);
         jScrollPane2.setViewportView(DOCUMENTO);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 250, 200));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 250, 310));
         jPanel1.add(DOC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 100, -1));
 
         TITULO.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -171,7 +159,7 @@ public class Documentos extends javax.swing.JFrame  {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 50, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 50, 30));
 
         username1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,16 +175,15 @@ public class Documentos extends javax.swing.JFrame  {
 
         jLabel4.setText("Usuario:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 170, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 380));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDocActionPerformed
         if (username1.getText().isEmpty() || TITULO.getText().isEmpty() || SIZE.getText().isEmpty() || DOC.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor rellene los campos", "ADVERTENCIA", 2);
+            JOptionPane.showMessageDialog(null, "Por favor, rellene los campos.", "ADVERTENCIA", 2);
         } else {
             String usuario = this.username1.getText().toLowerCase();
 
@@ -206,10 +193,10 @@ public class Documentos extends javax.swing.JFrame  {
 
             String tipo = this.DOC.getText().toLowerCase();
 
-            this.tabla.eliminar(usuario);
+            this.tabla.eliminarDoc(usuario, titulo);
 
             String texto = "Documento eliminado";
-            DOCUMENTO.setText(texto);
+            DOCUMENTO.setText(this.tabla.imprimirUser(""));
 
         }
 
@@ -218,7 +205,7 @@ public class Documentos extends javax.swing.JFrame  {
 
     private void crearDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDocActionPerformed
         if (username1.getText().isEmpty() || TITULO.getText().isEmpty() || SIZE.getText().isEmpty() || DOC.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor rellene los campos", "ADVERTENCIA", 2);
+            JOptionPane.showMessageDialog(null, "Por favor, rellene los campos.", "ADVERTENCIA", 2);
         } else {
             String usuario = this.username1.getText().toLowerCase();
             String titulo = this.TITULO.getText().toLowerCase();
@@ -228,30 +215,43 @@ public class Documentos extends javax.swing.JFrame  {
             String tipo = this.DOC.getText().toLowerCase();
             String texto = "Usuario: " + usuario + "\nTítulo: " + titulo + "\nTamaño: " + size + "\nTipo: " + tipo;
 
-            DOCUMENTO.setText(texto);
 
-            this.tabla.insertarDoc(usuario, titulo, size, tipo, 0);
+
+            this.tabla.insertarDoc(usuario, titulo, size, tipo, Reloj.segundos);
+            DOCUMENTO.setText(this.tabla.imprimirUser(""));
+
         }
 
     }//GEN-LAST:event_crearDocActionPerformed
 
     private void colaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colaActionPerformed
-        this.cola.setText(mb.imprimir(""));
+        
+        mb = new MonticuloBinario(100);        
+        NodeDoc n = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 8);
+        mb.insertar(n);
+        NodeDoc m = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 5);
+        mb.insertar(m);
+        NodeDoc o = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 9);
+        mb.insertar(o);
+        NodeDoc p = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 2);
+        mb.insertar(p);
+        NodeDoc q = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 3);
+        mb.insertar(q);
+        NodeDoc w = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 4);
+        mb.insertar(w);
+        NodeDoc i = new NodeDoc("Dsgdf", "Dssfsfs", "sddsfds", 1);
+        mb.insertar(i);
+        this.DOCUMENTO.setText(mb.imprimir(""));
+        
     }//GEN-LAST:event_colaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void username1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username1ActionPerformed
         // TODO add your handling code here:
@@ -272,6 +272,11 @@ public class Documentos extends javax.swing.JFrame  {
     private void TITULOKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TITULOKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_TITULOKeyTyped
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+        Ventana1 v = new Ventana1(mb, tabla);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,7 +315,7 @@ public class Documentos extends javax.swing.JFrame  {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Documentos(new TablaDispersion()).setVisible(true);
+            new Documentos(tabla,mb).setVisible(true);
         });
     }
 
@@ -325,8 +330,6 @@ public class Documentos extends javax.swing.JFrame  {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

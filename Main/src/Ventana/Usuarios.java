@@ -1,29 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package EDD;
 
+package Ventana;
+
+import EDD.MonticuloBinario;
+import EDD.NodeUser;
+import EDD.TablaDispersion;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Asus
+ * Ventana del apartado de usuarios
+ * 
+ * @author Gianfranco Mongiello
  */
 public class Usuarios extends javax.swing.JFrame {
 
     public MonticuloBinario mb;
     public static TablaDispersion tabla;
+    public static MonticuloBinario MB;
 
     /**
      * Creates new form Usuarios
      *
      * @param t
+     * @param MB
      */
-    public Usuarios(TablaDispersion t) {
+    public Usuarios(TablaDispersion t, MonticuloBinario MB) {
         this.tabla = t;
+        this.mb = MB;
         initComponents();
         this.setVisible(true);
+        this.TextAreaCola.setText(tabla.imprimirUser(""));
     }
 
     /**
@@ -59,7 +65,7 @@ public class Usuarios extends javax.swing.JFrame {
                 eliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
+        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         imprimir.setText("Imprimir");
         imprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -67,14 +73,19 @@ public class Usuarios extends javax.swing.JFrame {
                 imprimirActionPerformed(evt);
             }
         });
-        jPanel1.add(imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
+        jPanel1.add(imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
+        username1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                username1ActionPerformed(evt);
+            }
+        });
         username1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 username1KeyTyped(evt);
             }
         });
-        jPanel1.add(username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, -1));
+        jPanel1.add(username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 150, -1));
 
         crear1.setText("Crear");
         crear1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +93,7 @@ public class Usuarios extends javax.swing.JFrame {
                 crear1ActionPerformed(evt);
             }
         });
-        jPanel1.add(crear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        jPanel1.add(crear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         jButton1.setText("◀");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +101,7 @@ public class Usuarios extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 50, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 50, 30));
 
         jLabel4.setText("Nombre:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
@@ -102,11 +113,12 @@ public class Usuarios extends javax.swing.JFrame {
         TextAreaCola.setRows(5);
         jScrollPane1.setViewportView(TextAreaCola);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, 190));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 220, 270));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 2, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Ebrima", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("USUARIOS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alta", "Media", "Baja" }));
         ComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -114,9 +126,9 @@ public class Usuarios extends javax.swing.JFrame {
                 ComboBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(ComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 260, -1));
+        jPanel1.add(ComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 150, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 250));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -124,39 +136,54 @@ public class Usuarios extends javax.swing.JFrame {
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
         // TextAreaCola.setText();
         tabla.imprimir();
+        this.TextAreaCola.setText(tabla.imprimirUser(""));
 
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void crear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crear1ActionPerformed
         if (username1.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor rellene los campos", "ADVERTENCIA", 2);
+            JOptionPane.showMessageDialog(null, "Por favor, rellene los campos.", "ADVERTENCIA", 2);
         } else {
             String usuario = this.username1.getText().toLowerCase();
 
             String combo = this.ComboBox.getSelectedItem().toString();
-            this.tabla.insertar(usuario, combo);
+            int a = this.tabla.BuscarUsuario(usuario);
+            if(a==-1){
+//            NodeUser nd = this.tabla.usuarios[a];
+//            if(nd == null){
+            this.tabla.insertar(usuario,  combo);
 
             String texto = "Usuario creado: " + usuario + "\nPrioridad: " + combo;
-            TextAreaCola.setText(texto);
+            TextAreaCola.setText(this.tabla.imprimirUser(""));    
+}
+            else{
+                JOptionPane.showMessageDialog(rootPane, "EL USUARIO YA EXISTE");
+            }
         }
     }//GEN-LAST:event_crear1ActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         if (username1.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor rellene los campos", "ADVERTENCIA", 2);
+            JOptionPane.showMessageDialog(null, "Por favor, rellene los campos.", "ADVERTENCIA", 2);
         } else {
-
             String usuario = this.username1.getText().toLowerCase();
+            int a = this.tabla.BuscarUsuario(usuario);
+            
+            if(a != -1){
+            
             this.tabla.eliminar(usuario);
 
             String texto = "Usuario eliminado";
             TextAreaCola.setText(texto);
+            this.TextAreaCola.setText(tabla.imprimirUser(""));}
         }
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        Ventana1 v = new Ventana1(mb, tabla);
+        this.TextAreaCola.setText(tabla.imprimirUser(""));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxActionPerformed
@@ -165,13 +192,18 @@ public class Usuarios extends javax.swing.JFrame {
 
     private void username1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_username1KeyTyped
         int key = evt.getKeyChar();
-        
+        boolean mayuscula = key >= 65 && key <= 90;
+        boolean minuscula = key >= 97 && key <= 122;
         boolean vacio = key != 32;
 
-        if (!( vacio)) {
+        if (!(minuscula || mayuscula || vacio)) {
             evt.consume();
         }
     }//GEN-LAST:event_username1KeyTyped
+
+    private void username1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_username1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,10 +233,8 @@ public class Usuarios extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Usuarios(tabla).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Usuarios(tabla, MB).setVisible(true);
         });
     }
 

@@ -1,23 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package EDD;
 
 /**
- *
- * @author Asus
+ *Esta clase define la tabla de dispercion
+ * 
+ * @author Cristian Fazio
  */
 public class TablaDispersion {
-
+//Campos de la clase
     public NodeUser[] usuarios;
     public int capacidad;
-
+/**
+ * Constructor de la clase
+ */
     public TablaDispersion() {
         this.usuarios = new NodeUser[200];
         this.capacidad = 0;
     }
-
+ /**
+     * 
+     * Metodo que permite calcular el hash del usuario
+     * 
+     */
     public int calcHash(String usuario) {
         int hash = 0;
         for (int i = 0; i < usuario.length(); i++) {
@@ -27,7 +31,13 @@ public class TablaDispersion {
         hash = hash % 200;
         return hash;
     }
-
+//cierre del metodo
+    
+     /**
+     * 
+     * Metodo que permite agregar a un usuario 
+     * 
+     */
     public void insertar(String NameUsuario, String Prioridad) {
         int hash = calcHash(NameUsuario);
         if (usuarios[hash] == null) {
@@ -49,7 +59,14 @@ public class TablaDispersion {
             }
         }
     }
+//cierre del metodo    
 
+    
+     /**
+     * 
+     * Metodo que permite buscar el usuario seleccionado
+     * 
+     */
     public int BuscarUsuario(String usuario) {
 
         int hash = calcHash(usuario);
@@ -74,43 +91,108 @@ public class TablaDispersion {
                             break;
                         } else {
                             cont++;
-                          }
-                      }
-                  }
-              }
-          }
+                        }
+                    }
+                }
+            }
+        }
         return -1;
-   }
-
-    public void eliminar(String usuario){
+    }
+//cierre del metodo
+    
+     /**
+     * 
+     * Metodo que permite eliminar el usuario seleccionado
+     * 
+     */
+    
+    public void eliminar(String usuario) {
         int n = BuscarUsuario(usuario);
-            if (n != -1) {
-                this.usuarios[n] = null;}
-   }
-    public void imprimir(){
-        
-    for (int i = 0; i < usuarios.length; i++) {
-        if (usuarios[i] != null) {
-            System.out.println("Nombre de Usuario: " + usuarios[i].getNameUsuario());
-            System.out.println("Prioridad: " + usuarios[i].getPrioridad());
-            System.out.println("Posicion: " + i );
-            
-            for (int j = 0; j < 11; j++) {
-                if(usuarios[i].docs[j]!= null){
-                  System.out.println("Documento: " + usuarios[i].docs[j].title);
-            }}
+        if (n != -1) {
+            this.usuarios[n] = null;
+        }
+    }
+    //cierre del metodo
+
+     /**
+     * 
+     * Metodo que permite imprimir 
+     * 
+     */
+    
+    public void imprimir() {
+
+        for (int i = 0; i < usuarios.length; i++) {
+            if (usuarios[i] != null) {
+                System.out.println("Nombre de Usuario: " + usuarios[i].getNameUsuario());
+                System.out.println("Prioridad: " + usuarios[i].getPrioridad());
+                System.out.println("Posicion: " + i);
+
+                for (int j = 0; j < 11; j++) {
+                    if (usuarios[i].docs[j] != null) {
+                        System.out.println("Documento: " + usuarios[i].docs[j].title);
+                    }
+                }
             }
         }
     }
+    //cierre del metodo
+
+     /**
+     * 
+     * Metodo que permite insertar el documento deseado
+     */
     
-    public void insertarDoc(String usuario, String titulo, String size, String tipo, int tiempo){
+    public void insertarDoc(String usuario, String titulo, String size, String tipo, int tiempo) {
         int index = this.BuscarUsuario(usuario);
-        NodeDoc d = new NodeDoc(  titulo, size,  tipo,  tiempo);
+        NodeDoc d = new NodeDoc(titulo, size, tipo, tiempo);
         this.usuarios[index].insertarDoc(d);
     }
+    //cierre del metodo
     
-    public void eliminarDoc(String usuario, String titulo){
+     /**
+     * 
+     * Metodo que permite eliminar el doc seleccionado
+     * 
+     */
+
+    public void eliminarDoc(String usuario, String titulo) {
         int index = this.BuscarUsuario(usuario);
-        this.usuarios[index].eliminarDoc(titulo);
+        if(index!=-1){
+        this.usuarios[index].eliminarDoc(titulo);}
     }
+    //cierre del metodo
+
+    
+    /**
+     * 
+     * Metodo que permite imprimir el usuario seleccionado
+     * 
+     */
+    public String imprimirUser(String data) {
+        for (int i = 0; i < this.usuarios.length; i++) {
+            if (this.usuarios[i] != null) {
+                data += "Usuario: "+this.usuarios[i].getNameUsuario() + "\n";
+                boolean vacio = true;
+                    
+                
+                for (int j = 0; j < this.usuarios[i].docs.length; j++) {
+                    if (this.usuarios[i].docs[j] != null) {
+                        if(vacio){
+                            data += "Documentos: " + "\n";
+                            vacio = false;
+                        }
+                        data += "   -"+this.usuarios[i].docs[j].title + "\n";
+
+                    }
+
+                }
+
+            }
+
+        }
+        return data;
+    }
+    //cierre del metodo
 }
+//Cierre de la clase

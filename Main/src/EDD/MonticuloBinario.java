@@ -1,13 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package EDD;
 
-//**
+package EDD;
+/**
+*
+* Esta clase define el monticulo Binario
+*
+* @autor: Cristian Fazio
+*
+*/
 public class MonticuloBinario {
-    private NodeDoc[] heap;
+    // Campos de la clase
+    public NodeDoc[] heap;
     private int size;
+
+    public NodeDoc[] getHeap() {
+        return heap;
+    }
+
+    public void setHeap(NodeDoc[] heap) {
+        this.heap = heap;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
 
     public MonticuloBinario(int capacidad) {
         heap = new NodeDoc[capacidad];
@@ -24,7 +43,7 @@ public class MonticuloBinario {
         size++;
     }
 
-    public NodeDoc extraerMinimo() {
+    public NodeDoc eliminarMinimo() {
         if (size == 0) {
             return null; // o algún valor que indique error
         }
@@ -32,7 +51,7 @@ public class MonticuloBinario {
         NodeDoc minimo = heap[0];
         heap[0] = heap[size - 1];
         size--;
-        ajustarHaciaAbajo();
+        this.ajustarHaciaAbajo(0);
 
         return minimo;
     }
@@ -45,7 +64,7 @@ public class MonticuloBinario {
         }
     }
 
-    private void ajustarHaciaAbajo() {
+    public void ajustarHaciaAbajo(int i) {
         int indice = 0;
         while (tieneHijoIzquierdo(indice)) {
             int indiceHijoMenor = indiceHijoIzquierdo(indice);
@@ -67,11 +86,11 @@ public class MonticuloBinario {
         return (indice - 1) / 2;
     }
 
-    private int indiceHijoIzquierdo(int indice) {
+    public int indiceHijoIzquierdo(int indice) {
         return 2 * indice + 1;
     }
 
-    private int indiceHijoDerecho(int indice) {
+    public int indiceHijoDerecho(int indice) {
         return 2 * indice + 2;
     }
 
@@ -90,10 +109,9 @@ public class MonticuloBinario {
     }
     
     public String imprimir(String cola){
-         NodeDoc min = this.extraerMinimo();
-
+         NodeDoc min = this.eliminarMinimo();
         if(min!= null){ 
-                cola += min.title + " ,  " + min.etiquetaDeTiempo + "\n";
+                cola += "Documento: " + min.title + " ,  tiempo para imprimise: " + min.etiquetaDeTiempo + "\n";
                 cola = imprimir(cola);
                 this.insertar(min);
                 return cola;
