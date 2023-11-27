@@ -1,14 +1,11 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package EDD;
-/**
-*
-* Esta clase define el monticulo Binario
-*
-* @autor: Cristian Fazio
-*
-*/
+
+//**
 public class MonticuloBinario {
-    // Campos de la clase
     public NodeDoc[] heap;
     private int size;
 
@@ -86,11 +83,11 @@ public class MonticuloBinario {
         return (indice - 1) / 2;
     }
 
-    public int indiceHijoIzquierdo(int indice) {
+    private int indiceHijoIzquierdo(int indice) {
         return 2 * indice + 1;
     }
 
-    public int indiceHijoDerecho(int indice) {
+    private int indiceHijoDerecho(int indice) {
         return 2 * indice + 2;
     }
 
@@ -111,7 +108,7 @@ public class MonticuloBinario {
     public String imprimir(String cola){
          NodeDoc min = this.eliminarMinimo();
         if(min!= null){ 
-                cola += "Documento: " + min.title + " ,  tiempo para imprimise: " + min.etiquetaDeTiempo + "\n";
+                cola += min.title + " ,  " + min.etiquetaDeTiempo + "\n";
                 cola = imprimir(cola);
                 this.insertar(min);
                 return cola;

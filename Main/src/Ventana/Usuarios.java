@@ -1,16 +1,16 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package Ventana;
 
 import EDD.MonticuloBinario;
-import EDD.NodeUser;
 import EDD.TablaDispersion;
 import javax.swing.JOptionPane;
 
 /**
  *
- * Ventana del apartado de usuarios
- * 
- * @author Gianfranco Mongiello
+ * @author Asus
  */
 public class Usuarios extends javax.swing.JFrame {
 
@@ -26,7 +26,7 @@ public class Usuarios extends javax.swing.JFrame {
      */
     public Usuarios(TablaDispersion t, MonticuloBinario MB) {
         this.tabla = t;
-        this.mb = MB;
+        this.MB = MB;
         initComponents();
         this.setVisible(true);
         this.TextAreaCola.setText(tabla.imprimirUser(""));
@@ -147,18 +147,12 @@ public class Usuarios extends javax.swing.JFrame {
             String usuario = this.username1.getText().toLowerCase();
 
             String combo = this.ComboBox.getSelectedItem().toString();
-            int a = this.tabla.BuscarUsuario(usuario);
-            if(a==-1){
-//            NodeUser nd = this.tabla.usuarios[a];
-//            if(nd == null){
             this.tabla.insertar(usuario,  combo);
 
             String texto = "Usuario creado: " + usuario + "\nPrioridad: " + combo;
-            TextAreaCola.setText(this.tabla.imprimirUser(""));    
-}
-            else{
-                JOptionPane.showMessageDialog(rootPane, "EL USUARIO YA EXISTE");
-            }
+            TextAreaCola.setText(texto);    
+            this.TextAreaCola.setText(tabla.imprimirUser(texto));
+
         }
     }//GEN-LAST:event_crear1ActionPerformed
 
@@ -166,16 +160,13 @@ public class Usuarios extends javax.swing.JFrame {
         if (username1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, rellene los campos.", "ADVERTENCIA", 2);
         } else {
+
             String usuario = this.username1.getText().toLowerCase();
-            int a = this.tabla.BuscarUsuario(usuario);
-            
-            if(a != -1){
-            
             this.tabla.eliminar(usuario);
 
             String texto = "Usuario eliminado";
             TextAreaCola.setText(texto);
-            this.TextAreaCola.setText(tabla.imprimirUser(""));}
+            this.TextAreaCola.setText(tabla.imprimirUser(""));
         }
     }//GEN-LAST:event_eliminarActionPerformed
 

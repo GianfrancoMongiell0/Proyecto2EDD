@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package Ventana;
 
 import EDD.MonticuloBinario;
@@ -10,10 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * Ventana del apartado de documentos
- * 
- * @author Cristian Fazio
- * 
+ * @author Asus
  */
 public class Documentos extends javax.swing.JFrame {
 
@@ -30,13 +30,8 @@ public class Documentos extends javax.swing.JFrame {
     public Documentos(TablaDispersion t, MonticuloBinario MB) {
 
         this.tabla = t;
-        this.mb = MB;
         initComponents();
         this.setVisible(true);
-        DOCUMENTO.setText(this.tabla.imprimirUser(""));
-                System.out.println(mb==null);
-
-
     }
 
     /**
@@ -193,10 +188,10 @@ public class Documentos extends javax.swing.JFrame {
 
             String tipo = this.DOC.getText().toLowerCase();
 
-            this.tabla.eliminarDoc(usuario, titulo);
+            this.tabla.eliminar(usuario);
 
             String texto = "Documento eliminado";
-            DOCUMENTO.setText(this.tabla.imprimirUser(""));
+            DOCUMENTO.setText(texto);
 
         }
 
@@ -215,11 +210,9 @@ public class Documentos extends javax.swing.JFrame {
             String tipo = this.DOC.getText().toLowerCase();
             String texto = "Usuario: " + usuario + "\nTítulo: " + titulo + "\nTamaño: " + size + "\nTipo: " + tipo;
 
+            DOCUMENTO.setText(texto);
 
-
-            this.tabla.insertarDoc(usuario, titulo, size, tipo, Reloj.segundos);
-            DOCUMENTO.setText(this.tabla.imprimirUser(""));
-
+            this.tabla.insertarDoc(usuario, titulo, size, tipo, 0);
         }
 
     }//GEN-LAST:event_crearDocActionPerformed

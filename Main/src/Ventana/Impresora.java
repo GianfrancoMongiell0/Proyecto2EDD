@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package Ventana;
 
 import EDD.MonticuloBinario;
@@ -9,9 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * Ventana donde se manda a imprir a la impresora
- * 
- * @author Gianfranco Mongiello
+ * @author Asus
  */
 public class Impresora extends javax.swing.JFrame {
 
@@ -25,8 +26,6 @@ public class Impresora extends javax.swing.JFrame {
         this.tabla = tabla;
         this.mb = mb;
         initComponents();
-                System.out.println(mb==null);
-
     }
 
     /**
@@ -126,31 +125,21 @@ public class Impresora extends javax.swing.JFrame {
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
         String user = this.usuario.getText();
         int indice = tabla.BuscarUsuario(user);
-        if(indice!=-1){
         NodeUser nodo = tabla.usuarios[indice];
         if (nodo != null) {
             NodeDoc nd = nodo.buscarDocumento(document.getText());
             if (nd != null) {
-                int s = Reloj.segundos;
-                if(nodo.getPrioridad().equals("Alta")){
-                    s = s/4;
-                }else if(nodo.getPrioridad().equals("Media")){
-                    s = s/2;
-                }
-                
-                
-                nd.etiquetaDeTiempo = s;
                 mb.insertar(nd);
                 JOptionPane.showMessageDialog(rootPane, "DOCUMENTO AGREGADO", user, HEIGHT);
             }
         }
-        cola.setText(mb.imprimir(""));}
+        cola.setText(mb.imprimir(""));
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void cancelarImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarImpActionPerformed
         String user = this.usuario.getText();
         int indice = tabla.BuscarUsuario(user);
-        if(indice!=-1){
+
         NodeUser u = tabla.usuarios[indice];
         if (u != null) {
             NodeDoc doc = u.buscarDocumento(this.document.getText());
@@ -159,12 +148,12 @@ public class Impresora extends javax.swing.JFrame {
                 for (int i = 0; i < this.mb.getSize(); i++) {
                     if (this.mb.heap[i] != null) {
                         this.mb.ajustarHaciaAbajo(i);
-                    }}
-                JOptionPane.showMessageDialog(rootPane, this.mb.eliminarMinimo().title);   
-                    
+                    }
+                    JOptionPane.showMessageDialog(rootPane, this.mb.eliminarMinimo().title);   
+                    }
                 }
             cola.setText(mb.imprimir(""));
-        }}
+        }
     }//GEN-LAST:event_cancelarImpActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

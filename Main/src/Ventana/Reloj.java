@@ -1,32 +1,25 @@
 package Ventana;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.*;
 
 /**
  *
- * Ventana del reloj
- * 
- * @author Gianfranco Mongiello
+ * @author gianf
  */
-public class Reloj extends javax.swing.JFrame{
+public class Reloj extends javax.swing.JFrame implements Runnable{
 
-public static int segundos;
-    public javax.swing.Timer timer;
-    
+    String hora, minutos, segundos, ampm;
+    Calendar calendario;
+    Thread h1;
+
     public Reloj() {
         initComponents();
+        h1 = new Thread(this);
+        h1.start();
+        
         setLocationRelativeTo(null);
-        this.setVisible(false);
-        timer = new javax.swing.Timer(1000,new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                segundos++;
-                lblReloj.setText(segundos + "s");
-            }
-            });
-        timer.start();
+        setTitle("RELOJ");
+        setVisible(true);
     }
 
     /**
@@ -68,35 +61,35 @@ public static int segundos;
     private javax.swing.JLabel lblReloj;
     // End of variables declaration//GEN-END:variables
 
-   public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reloj.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reloj.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reloj.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reloj.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    @Override
+    public void run() {
+        Thread ct = Thread.currentThread();
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Reloj().setVisible(true);
+        while (ct == h1) {
+            calcula();
+            lblReloj.setText(hora + ":" + minutos + ":" + segundos + " " + ampm);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
             }
-        });
+        }
+    }
+
+    private void calcula() {
+        Calendar calendario = new GregorianCalendar();
+        Date fechaHoraActual = new Date();
+
+        calendario.setTime(fechaHoraActual);
+
+        ampm = calendario.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM";
+        if (ampm.equals("PM")) {
+            int h = calendario.get(Calendar.HOUR_OF_DAY) - 12;
+            hora = h > 9 ? "" : "0" + h;
+        }
+        else{
+        hora = calendario.get(Calendar.HOUR_OF_DAY)>9?""+calendario.get(Calendar.HOUR_OF_DAY):"0"+calendario.get(Calendar.HOUR_OF_DAY);
+        }
+        minutos = calendario.get(Calendar.MINUTE)>9?""+calendario.get(Calendar.MINUTE):"0"+calendario.get(Calendar.MINUTE);
+        segundos = calendario.get(Calendar.SECOND)>9?""+calendario.get(Calendar.SECOND):"0"+calendario.get(Calendar.SECOND);
     }
 }
